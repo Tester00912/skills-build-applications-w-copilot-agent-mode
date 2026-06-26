@@ -1,19 +1,22 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.mongoUri = void 0;
-exports.connectToDatabase = connectToDatabase;
-const dotenv_1 = __importDefault(require("dotenv"));
-const mongoose_1 = __importDefault(require("mongoose"));
-dotenv_1.default.config();
-exports.mongoUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/octofit_db';
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
+
+dotenv.config();
+
+const mongoUri = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/octofit_db';
+
 async function connectToDatabase() {
-    if (mongoose_1.default.connection.readyState >= 1) {
-        return mongoose_1.default.connection;
-    }
-    await mongoose_1.default.connect(exports.mongoUri);
-    return mongoose_1.default.connection;
+  if (mongoose.connection.readyState >= 1) {
+    return mongoose.connection;
+  }
+
+  await mongoose.connect(mongoUri);
+  return mongoose.connection;
 }
-exports.default = connectToDatabase;
+
+module.exports = {
+  connectToDatabase,
+  mongoUri,
+};
+
+module.exports.default = connectToDatabase;
