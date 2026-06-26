@@ -9,7 +9,7 @@ const team_1 = require("../models/team");
 const activity_1 = require("../models/activity");
 const leaderboard_1 = require("../models/leaderboard");
 const workout_1 = require("../models/workout");
-const database_1 = require("../database");
+const database_1 = require("../config/database");
 dotenv_1.default.config();
 async function seed() {
     console.log('Seed the octofit_db database with test data');

@@ -6,7 +6,7 @@ import activitiesRouter from './routes/activities';
 import leaderboardRouter from './routes/leaderboard';
 import workoutsRouter from './routes/workouts';
 import { getApiBaseUrl } from './config';
-import { connectToDatabase } from './database';
+import { connectToDatabase } from './config/database';
 
 dotenv.config();
 
